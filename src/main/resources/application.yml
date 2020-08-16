@@ -1,0 +1,13 @@
+server:
+    port: 8090
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/casserver?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: root
+mybatis:
+    type-aliases-package: com.xiaozhao.pojo
+    config-location: classpath:mybatis/mybatis-config.xml
+    mapper-locations: classpath:mybatis/mapper/*.xml

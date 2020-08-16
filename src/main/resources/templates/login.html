@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>小赵的后台管理</title>
+    <link href="login.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="login_box">
+    <div class="login">
+        <div class="login_name">
+            <p>小赵的后台登录</p>
+        </div>
+        <form method="post" action="/login">
+            <input type="hidden" th:value="${url}" name="url"/>
+            <input name="username" type="text" value="Jack" onfocus="this.value=''"
+                   onblur="if(this.value==''){this.value='用户名'}">
+            <span id="password_text"
+                  onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();">密码</span>
+            <input name="password" type="password" id="password" style="display:none;" value="123456"
+                   onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};"/>
+            <input value="登录" style="width:100%;" type="submit">
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
