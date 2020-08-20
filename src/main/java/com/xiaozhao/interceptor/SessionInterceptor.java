@@ -18,12 +18,14 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 
         String token=null;
         HttpSession session = request.getSession(false);
+        //判断是否已经有登录过的token
         if(session != null && session.getAttribute("token") != null){
             token = (String)session.getAttribute("token");
         }else{
             token = request.getParameter("token");
         }
         System.out.println(token);
+        //验证token的有效性
         if (token != null) {
             String reqUrl = "http://www.xiaozhao.com:8090/checkToken";
             String content = "token=" + token;
@@ -32,7 +34,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
                 return true;
             }
         }
-        //既没有session会话信息，又没有其他系统已经登录过的token信息的，sso.com认证
+        //既没有session会话信息，又没有其他系统已经登录过的token信息的，sso.com进行认证登录
         response.sendRedirect("http://www.xiaozhao.com:8090/preLogin?url=www.xiaozhao.com:8090/xiaozhao/wel");
         return false;
     }

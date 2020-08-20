@@ -18,7 +18,14 @@ import java.util.Map;
  * Description:
  */
 public class JwtUtil {
-    /**创建JWT*/
+    /**
+     * 创建token
+     * @param name
+     * @param id
+     * @return
+     * @throws IllegalArgumentException
+     * @throws UnsupportedEncodingException
+     */
     public static String createJwt(String name,Long id) throws IllegalArgumentException, UnsupportedEncodingException {
         Algorithm al = Algorithm.HMAC256("secretkey");
 
@@ -31,7 +38,12 @@ public class JwtUtil {
         return token;
 
     }
-    /**验证jwt*/
+
+    /**
+     * 验证token是否合法
+     * @param token
+     * @return
+     */
     public static boolean verifyJwt(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256("secretkey");
@@ -50,7 +62,11 @@ public class JwtUtil {
         return false;
     }
 
-    /**验证jwt*/
+    /**
+     * 获得token信息
+     * @param token
+     * @return
+     */
     private static Map<String, Claim> getJwt(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256("secretkey");
@@ -68,6 +84,7 @@ public class JwtUtil {
         }
         return new HashMap<String, Claim>();
     }
+
     /**
      * 根据Token获取user_id
      *

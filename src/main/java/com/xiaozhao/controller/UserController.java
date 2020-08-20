@@ -20,14 +20,21 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    /**
+     * 系统入口
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping("/wel")
-    public String wel(HttpServletRequest request, Model model){
+    public String wel(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
-        String token = (String)session.getAttribute("token");
+        String token = (String) session.getAttribute("token");
         long useId = JwtUtil.getAppUID(token);
         User user = userService.queryById(useId);
-        System.out.println("**********************************"+useId);
-        model.addAttribute("userName",user.getUserName());
+        System.out.println("**********************************" + useId);
+        model.addAttribute("userName", user.getUserName());
         return "wel";
     }
 
