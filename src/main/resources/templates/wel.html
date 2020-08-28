@@ -6,10 +6,12 @@
 </head>
 <div id="top">
     <h2>hi,欢迎来到主系统</h2>
+
     <h3 th:text="${userName}"></h3>
     <div id="topTags">
         <ul>
-            <a href="http://www.user.com:8081/user/wel">前往用户系统</a>
+
+            <a th:href="@{http://www.xiaozhao.com:8090/toUser(userName=${userName})}">前往用户系统</a>
             <br>
             <a href="http://www.xiaozhao.com:8090/logout?url=www.xiaozhao.com:8090/xiaozhao/wel">注销</a>
         </ul>
